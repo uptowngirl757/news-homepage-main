@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--    <link rel="stylesheet" href="./main.css"/>-->
+    <title>Frontend Mentor | News homepage</title>
+</head>
+<body>
+<main class="w-full max-w-[1300px] mx-auto py-10 px-5 font-[Inter]">
+    <nav class="py-5 pb-10 flex justify-between items-center w-full">
+        <div class="logo"><img src="./assets/images/logo.svg" alt=""/></div>
+        <ul
+                class="flex items-center justify-between text-[#00001aff] space-x-6"
+        >
+            <li class="font-medium"><a href="#">Home</a></li>
+            <li class="font-medium"><a href="#">New</a></li>
+            <li class="font-medium"><a href="#">Popular</a></li>
+            <li class="font-medium"><a href="#">Trending</a></li>
+            <li class="font-medium"><a href="#">Categories</a></li>
+        </ul>
+    </nav>
+
+    <section
+            class="grid grid-cols-[2fr_1fr] gap-[4rem_3rem] max-md:grid-cols-1"
+    >
+        <section class="grid place-items-start grid-cols-2 gap-[2rem]">
+            <img src="./assets/images/image-web-3-desktop.jpg"
+                 alt=""
+                 class="hidden sm:block col-span-2 h-full object-cover"/>
+            <img src="./assets/images/image-web-3-mobile.jpg"
+                 alt=""
+                 class="block sm:hidden col-span-2 h-full object-cover"/>
+            <h1 class="text-[2.7rem] font-extrabold leading-[1.2] max-md:text-[2.3rem]">The Bright Future of Web 3.0?</h1>
+            <div>
+                <p class="text-[#5d5f79ff] mb-[1.8rem] text-[.9rem]">
+                    We dive into the next evolution of the web that claims to put the
+                    power of the platforms back into the hands of the people. But is
+                    it really fulfilling its promise?
+                </p>
+                <a href="#"
+                   class='bg-[#f15e50ff] inline-block uppercase text-[.87rem] font-bold p-[.65rem_2rem] cursor-pointer duration-300 ease-in hover:opacity-[.8]'>Read
+                    more</a>
+            </div>
+        </section>
+
+        <section class="bg-[#00001aff] text-[#fffdfaff] p-[1.2rem] flex flex-col gap-[1rem]">
+            <h3 class="text-[#e9ab53ff] text-[2.5rem] font-bold">New</h3>
+            <article class="mb-3">
+                <h4 class="font-bold text-[1.1rem]">Hydrogen VS Electric Cars</h4>
+
+                <p class="my-[.6rem .7rem] text-gray-400">Will hydrogen-fueled cars ever catch up to EVs?</p>
+            </article>
+            <hr class="border-gray-500">
+
+            <article>
+                <h4 class="font-bold text-[1.1rem]">The Downsides of AI Artistry</h4>
+                <p class="my-[.7rem] text-gray-400">
+                    What are the possible adverse effects of on-demand AI image
+                    generation?
+                </p>
+            </article>
+            <hr class="border-gray-500">
+
+            <article>
+                <h4 class="font-bold text-[1.1rem]">Is VC Funding Drying Up?</h4>
+                <p class="my-[.7rem] text-gray-400">
+                    Private funding by VC firms is down 50% YOY. We take a look at
+                    what that means.
+                </p>
+            </article>
+        </section>
+        <section class="flex justify-between items-center flex-wrap col-span-2 gap-[1.3rem] max-md:col-span-1">
+            <article class="flex items-center gap-[1.2rem]">
+                <img src="./assets/images/image-retro-pcs.jpg" alt="" class="h-[120px]"/>
+                <div>
+                    <h3 class="text-[1.7rem] font-extrabold text-[#f15e50ff]">01</h3>
+                    <h5 class="font-extrabold text-[1.1rem] mb-1">Reviving Retro PCs</h5>
+                    <p class="text-[.8rem] text-[#c5c6cef] max-w-[200px]"> What happens when old PCs are given modern
+                        upgrades?</p>
+                </div>
+            </article>
+            <article class="flex gap-[1.2rem] items-center">
+                <img src="./assets/images/image-top-laptops.jpg" alt="" class="h-[120px]"/>
+                <div>
+                    <h3 class="text-[1.7rem] font-extrabold text-[#f15e50ff]">02</h3>
+                    <h5 class="font-extrabold text-[1.1rem] mb-1">Top 10 Laptops of 2022</h5>
+                    <p class="text-[.8rem] text-[#c5c6cef] max-w-[200px]">
+                        Our best picks for various needs and budgets.
+                    </p>
+                </div>
+            </article>
+            <article class="flex gap-[1.2rem] items-center">
+                <img src="./assets/images/image-gaming-growth.jpg" alt="" class="h-[120px]"/>
+                <div>
+                    <h3 class="text-[1.7rem] font-extrabold text-[#f15e50ff]">03</h3>
+                    <h5 class="font-extrabold text-[1.1rem] mb-1">The Growth of Gaming</h5>
+                    <p class="text-[.8rem] text-[#c5c6cef] max-w-[200px]">
+                        How the pandemic has sparked fresh opportunities.
+                    </p>
+                </div>
+            </article>
+        </section>
+    </section>
+</main>
+</body>
+</html>
