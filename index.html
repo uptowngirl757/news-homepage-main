@@ -22,21 +22,41 @@
   </head>
   <body>
     <main class="w-full max-w-[1300px] mx-auto py-10 px-5 font-[Inter]">
-      <nav class="py-5 pb-10 flex justify-between items-center w-full">
-        <div class="logo"><img src="./assets/images/logo.svg" alt="" /></div>
-        <ul
-          class="hidden items-center justify-between text-[#00001aff] space-x-6 sm:flex"
-        >
-          <li class="font-medium"><a href="#">Home</a></li>
-          <li class="font-medium"><a href="#">New</a></li>
-          <li class="font-medium"><a href="#">Popular</a></li>
-          <li class="font-medium"><a href="#">Trending</a></li>
-          <li class="font-medium"><a href="#">Categories</a></li>
-        </ul>
-        <div class="grid place-content-center cursor-pointer sm:hidden group">
-          <div
-            class="w-11 h-1 bg-black rounded-full before:content-[''] before:absolute before:w-11 before:h-1 before:rounded-full before:bg-black before:-translate-y-2 after:absolute after:w-11 after:h-1 after:rounded-full after:bg-black after:translate-y-2 group-[.open]:bg-transparent group-[.open]:before:translate-y-0 group-[.open]:before:rotate-45 group-[.open]:after:translate-y-0 group-[.open]:after:-rotate-45 after:transition-all before:transition-all before:duration-150 after:duration-150"
-          ></div>
+      <nav class="relative top-0 flex justify-center items-center w-full">
+        <div class="py-5 pb-10 flex items-center w-full justify-between">
+          <div class="logo absolute">
+            <img src="./assets/images/logo.svg" alt="" />
+          </div>
+          <button
+            id="toggleMenu"
+            class="sm:hidden cursor-pointer absolute right-0 z-[30] group"
+          >
+            <div
+              class="block w-[25px] h-[3px] rounded-full space-x-2 bg-[#00001aff] mb-[3px] transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-1"
+            ></div>
+            <div
+              class="block w-[25px] h-[3px] rounded-full space-x-2 bg-[#00001aff] mb-[3px] transition-all duration-300 group-[.open]:opacity-0"
+            ></div>
+            <div
+              class="block w-[25px] h-[3px] rounded-full space-x-2 bg-[#00001aff] mb-[3px] transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-1"
+            ></div>
+          </button>
+          <ul
+            class="hidden sm:flex items-center justify-between text-[#00001aff] gap-[1.4rem] max-sm:flex-col max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:h-[100vh] max-sm:items-start max-sm:w-[250px] max-sm:px-[2.4rem] max-sm:py-[5rem] max-sm:bg-[#fffdfaff] max-sm:justify-center max-sm:gap-[4rem]"
+            id="navMenu"
+          >
+            <li class="font-medium max-sm:mb-[1rem]"><a href="#">Home</a></li>
+            <li class="font-medium max-sm:mb-[1rem]"><a href="#">New</a></li>
+            <li class="font-medium max-sm:mb-[1rem]">
+              <a href="#">Popular</a>
+            </li>
+            <li class="font-medium max-sm:mb-[1rem]">
+              <a href="#">Trending</a>
+            </li>
+            <li class="font-medium max-sm:mb-[1rem]">
+              <a href="#">Categories</a>
+            </li>
+          </ul>
         </div>
       </nav>
 
@@ -85,7 +105,6 @@
             </p>
           </article>
           <hr class="border-gray-500" />
-
           <article>
             <h4 class="font-bold text-[1.1rem]">
               The Downsides of AI Artistry
@@ -160,13 +179,24 @@
       </section>
     </main>
     <script>
-      const toggleMenu = document.querySelector(".group");
-      //   document.querySelector(".group").addEventListener("click", (e) => {
-      //     e.currentTarget.classList.toggle("open");
-      //   });
-      toggleMenu.onclick = () => {
-        toggleMenu.classList.toggle("open");
-      };
+      const toggleMenu = document.getElementById("toggleMenu");
+      const navMenu = document.getElementById("navMenu");
+      toggleMenu.addEventListener("click", () => {
+        toggleMenu.classList.toggle("open"); // toggles X animation
+        navMenu.classList.toggle("hidden"); // toggles menu visibility
+      });
+      document.addEventListener("click", (e) => {
+        if (!navMenu.contains(e.target) && !toggleMenu.contains(e.target)) {
+          toggleMenu.classList.remove("open");
+          navMenu.classList.add("hidden");
+        }
+      });
+      navMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleMenu.classList.remove("open");
+          navMenu.classList.add("hidden");
+        });
+      });
     </script>
   </body>
 </html>
