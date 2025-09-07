@@ -22,6 +22,12 @@
   </head>
   <body>
     <main class="w-full max-w-[1300px] mx-auto py-10 px-5 font-[Inter]">
+      <!-- Overlay -->
+      <!-- <div
+        id="overlay"
+        class="hidden fixed inset-0 right-[250px] bg-black/50 z-20"
+      ></div> -->
+
       <nav class="relative top-0 flex justify-center items-center w-full">
         <div class="py-5 pb-10 flex items-center w-full justify-between">
           <div class="logo absolute">
@@ -29,7 +35,7 @@
           </div>
           <button
             id="toggleMenu"
-            class="sm:hidden cursor-pointer absolute right-0 z-[30] group"
+            class="sm:hidden cursor-pointer absolute right-0 z-[30] group max-sm:fixed max-sm:top-15 max-sm:right-7"
           >
             <div
               class="block w-[25px] h-[3px] rounded-full space-x-2 bg-[#00001aff] mb-[3px] transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-1"
@@ -42,20 +48,14 @@
             ></div>
           </button>
           <ul
-            class="hidden sm:flex items-center justify-between text-[#00001aff] gap-[1.4rem] max-sm:flex-col max-sm:fixed max-sm:right-0 max-sm:top-0 max-sm:h-[100vh] max-sm:items-start max-sm:w-[250px] max-sm:px-[2.4rem] max-sm:py-[5rem] max-sm:bg-[#fffdfaff] max-sm:justify-center max-sm:gap-[4rem]"
             id="navMenu"
+            class="hidden absolute right-0 sm:flex items-center justify-between text-[#00001aff] gap-[1.4rem] max-sm:flex-col max-sm:fixed max-sm:top-0 max-sm:right-0 max-sm:h-screen max-sm:w-[250px] max-sm:items-start max-sm:px-[2.4rem] max-sm:py-[5rem] max-sm:bg-[#fffdfaff] max-sm:justify-start max-sm:gap-[4rem]"
           >
-            <li class="font-medium max-sm:mb-[1rem]"><a href="#">Home</a></li>
-            <li class="font-medium max-sm:mb-[1rem]"><a href="#">New</a></li>
-            <li class="font-medium max-sm:mb-[1rem]">
-              <a href="#">Popular</a>
-            </li>
-            <li class="font-medium max-sm:mb-[1rem]">
-              <a href="#">Trending</a>
-            </li>
-            <li class="font-medium max-sm:mb-[1rem]">
-              <a href="#">Categories</a>
-            </li>
+            <li class="font-medium"><a href="#">Home</a></li>
+            <li class="font-medium"><a href="#">New</a></li>
+            <li class="font-medium"><a href="#">Popular</a></li>
+            <li class="font-medium"><a href="#">Trending</a></li>
+            <li class="font-medium"><a href="#">Categories</a></li>
           </ul>
         </div>
       </nav>
@@ -105,6 +105,7 @@
             </p>
           </article>
           <hr class="border-gray-500" />
+
           <article>
             <h4 class="font-bold text-[1.1rem]">
               The Downsides of AI Artistry
@@ -181,16 +182,23 @@
     <script>
       const toggleMenu = document.getElementById("toggleMenu");
       const navMenu = document.getElementById("navMenu");
-      toggleMenu.addEventListener("click", () => {
-        toggleMenu.classList.toggle("open"); // toggles X animation
-        navMenu.classList.toggle("hidden"); // toggles menu visibility
+
+      // open/close button
+      toggleMenu.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMenu.classList.toggle("open");
+        navMenu.classList.toggle("hidden");
       });
+
+      // click outside closes
       document.addEventListener("click", (e) => {
         if (!navMenu.contains(e.target) && !toggleMenu.contains(e.target)) {
           toggleMenu.classList.remove("open");
           navMenu.classList.add("hidden");
         }
       });
+
+      // click on any nav link closes
       navMenu.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           toggleMenu.classList.remove("open");
